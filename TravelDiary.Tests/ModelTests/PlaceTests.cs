@@ -14,5 +14,13 @@ namespace JobBoard.Tests
       Place newPlace = new Place();
       Assert.AreEqual(typeof(Place), newPlace.GetType());
     }
+
+    [TestMethod]
+    public void GetCityName_GetsValueOfCityName_String()
+    {
+      Place newPlace = new Place();
+      string city = newPlace.cityName;
+      Assert.AreEqual(city, newPlace.cityName);
+    }
   }
 }
