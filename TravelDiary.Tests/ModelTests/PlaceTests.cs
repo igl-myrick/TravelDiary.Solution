@@ -19,8 +19,17 @@ namespace JobBoard.Tests
     public void GetCityName_GetsValueOfCityName_String()
     {
       Place newPlace = new Place();
-      string city = newPlace.cityName;
-      Assert.AreEqual(city, newPlace.cityName);
+      string city = newPlace.CityName;
+      Assert.AreEqual(city, newPlace.CityName);
+    }
+
+    [TestMethod]
+    public void SetCityName_SetsValueOfCityName_String()
+    {
+      Place newPlace = new Place();
+      string city = "Seattle";
+      newPlace.CityName = city;
+      Assert.AreEqual(city, newPlace.CityName);
     }
   }
 }
