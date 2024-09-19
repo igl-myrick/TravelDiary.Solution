@@ -4,6 +4,6 @@ namespace TravelDiary.Models
 {
   public class Place
   {
-
+    public string cityName { get; }
   }
 }
