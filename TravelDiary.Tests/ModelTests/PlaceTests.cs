@@ -6,30 +6,49 @@ using System.Collections.Generic;
 namespace JobBoard.Tests
 {
   [TestClass]
-  public class PlaceTests
+  public class PlaceTests : IDisposable
   {
+    public void Dispose()
+    {
+      Place.ClearAll();
+    }
+
     [TestMethod]
     public void PlaceConstructor_CreatesInstanceOfPlace_Place()
     {
-      Place newPlace = new Place();
+      Place newPlace = new Place("Seattle");
       Assert.AreEqual(typeof(Place), newPlace.GetType());
     }
 
     [TestMethod]
     public void GetCityName_GetsValueOfCityName_String()
     {
-      Place newPlace = new Place();
-      string city = newPlace.CityName;
+      string city = "Seattle";
+      Place newPlace = new Place(city);
       Assert.AreEqual(city, newPlace.CityName);
     }
 
     [TestMethod]
     public void SetCityName_SetsValueOfCityName_String()
     {
-      Place newPlace = new Place();
       string city = "Seattle";
-      newPlace.CityName = city;
-      Assert.AreEqual(city, newPlace.CityName);
+      Place newPlace = new Place(city);
+      string newCity = "New York";
+      newPlace.CityName = newCity;
+      string result = newPlace.CityName;
+      Assert.AreEqual(newCity, result);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsAllPlaces_List()
+    {
+      Place newPlace1 = new Place("Seattle");
+      Place newPlace2 = new Place("New York");
+      List<Place> newList = new List<Place> { newPlace1, newPlace2 };
+
+      List<Place> result = Place.GetAll();
+
+      CollectionAssert.AreEqual(newList, result);
     }
   }
 }
