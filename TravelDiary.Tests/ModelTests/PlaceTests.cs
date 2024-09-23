@@ -60,5 +60,16 @@ namespace JobBoard.Tests
 
       Assert.AreEqual(1, result);
     }
+
+    [TestMethod]
+    public void Find_ReturnsCorrectPlace_Place()
+    {
+      Place newPlace1 = new Place("Seattle");
+      Place newPlace2 = new Place("New York");
+
+      Place result = Place.Find(2);
+
+      Assert.AreEqual(newPlace2, result);
+    }
   }
 }
