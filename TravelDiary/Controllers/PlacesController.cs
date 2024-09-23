@@ -24,8 +24,15 @@ namespace TravelDiary.Controllers
     public ActionResult Create(string cityName)
     {
       Place newPlace = new Place(cityName);
-      return RedirectToAction("Index")
+      return RedirectToAction("Index");
     }
-    
+
+    [HttpPost("/places/delete")]
+    public ActionResult DeleteAll()
+    {
+      Place.ClearAll();
+      return View();
+    }
+
   }
 }
