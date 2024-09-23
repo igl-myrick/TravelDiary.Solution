@@ -24,5 +24,10 @@ namespace TravelDiary.Models
     {
       _instances.Clear();
     }
+
+    public static Place Find(int searchId)
+    {
+      return _instances[searchId-1];
+    }
   }
 }
