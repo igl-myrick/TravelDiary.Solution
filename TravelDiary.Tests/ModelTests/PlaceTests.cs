@@ -50,5 +50,15 @@ namespace JobBoard.Tests
 
       CollectionAssert.AreEqual(newList, result);
     }
+
+    [TestMethod]
+    public void GetId_PlacesInstantiateWithIdAndGetterReturns_Int()
+    {
+      Place newPlace = new Place("Seattle");
+
+      int result = newPlace.Id;
+
+      Assert.AreEqual(1, result);
+    }
   }
 }
