@@ -6,7 +6,7 @@ namespace TravelDiary.Models
   {
     public string CityName { get; set; }
     public string Duration { get; set; }
-    public string Entry { get; }
+    public string Entry { get; set; }
     public int Id { get; }
     private static List<Place> _instances = new List<Place> { };
 
