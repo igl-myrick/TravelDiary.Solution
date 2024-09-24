@@ -16,7 +16,7 @@ namespace JobBoard.Tests
     [TestMethod]
     public void PlaceConstructor_CreatesInstanceOfPlace_Place()
     {
-      Place newPlace = new Place("Seattle");
+      Place newPlace = new Place("Seattle", "1/1/2023 - 1/5/2023");
       Assert.AreEqual(typeof(Place), newPlace.GetType());
     }
 
@@ -24,7 +24,7 @@ namespace JobBoard.Tests
     public void GetCityName_GetsValueOfCityName_String()
     {
       string city = "Seattle";
-      Place newPlace = new Place(city);
+      Place newPlace = new Place(city, "1/1/2023 - 1/5/2023");
       Assert.AreEqual(city, newPlace.CityName);
     }
 
@@ -32,7 +32,7 @@ namespace JobBoard.Tests
     public void SetCityName_SetsValueOfCityName_String()
     {
       string city = "Seattle";
-      Place newPlace = new Place(city);
+      Place newPlace = new Place(city, "1/1/2023 - 1/5/2023");
       string newCity = "New York";
       newPlace.CityName = newCity;
       string result = newPlace.CityName;
@@ -40,10 +40,18 @@ namespace JobBoard.Tests
     }
 
     [TestMethod]
+    public void GetDuration_GetsValueOfDuration_String()
+    {
+      string tripDuration = "1/1/2023 - 1/5/2023";
+      Place newPlace = new Place("Seattle", tripDuration);
+      Assert.AreEqual(tripDuration, newPlace.Duration);
+    }
+
+    [TestMethod]
     public void GetAll_ReturnsAllPlaces_List()
     {
-      Place newPlace1 = new Place("Seattle");
-      Place newPlace2 = new Place("New York");
+      Place newPlace1 = new Place("Seattle", "1/1/2023 - 1/5/2023");
+      Place newPlace2 = new Place("New York", "6/1/2023 - 6/5/2023");
       List<Place> newList = new List<Place> { newPlace1, newPlace2 };
 
       List<Place> result = Place.GetAll();
@@ -54,7 +62,7 @@ namespace JobBoard.Tests
     [TestMethod]
     public void GetId_PlacesInstantiateWithIdAndGetterReturns_Int()
     {
-      Place newPlace = new Place("Seattle");
+      Place newPlace = new Place("Seattle", "1/1/2023 - 1/5/2023");
 
       int result = newPlace.Id;
 
@@ -64,8 +72,8 @@ namespace JobBoard.Tests
     [TestMethod]
     public void Find_ReturnsCorrectPlace_Place()
     {
-      Place newPlace1 = new Place("Seattle");
-      Place newPlace2 = new Place("New York");
+      Place newPlace1 = new Place("Seattle", "1/1/2023 - 1/5/2023");
+      Place newPlace2 = new Place("New York", "6/1/2023 - 6/5/2023");
 
       Place result = Place.Find(2);
 
