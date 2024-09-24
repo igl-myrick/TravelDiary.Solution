@@ -21,9 +21,9 @@ namespace TravelDiary.Controllers
     }
 
     [HttpPost("/places")]
-    public ActionResult Create(string cityName, string duration)
+    public ActionResult Create(string cityName, string duration, string entry)
     {
-      Place newPlace = new Place(cityName, duration);
+      Place newPlace = new Place(cityName, duration, entry);
       return RedirectToAction("Index");
     }
 
