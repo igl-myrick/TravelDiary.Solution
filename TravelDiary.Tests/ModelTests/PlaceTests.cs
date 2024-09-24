@@ -67,6 +67,17 @@ namespace JobBoard.Tests
     }
 
     [TestMethod]
+    public void SetEntry_SetsValueOfEntry_String()
+    {
+      string diaryEntry = "Entry";
+      Place newPlace = new Place("Seattle", "1/1/2023 - 1/5/2023", diaryEntry);
+      string newEntry = "New entry";
+      newPlace.Entry = newEntry;
+      string result = newPlace.Entry;
+      Assert.AreEqual(newEntry, result);
+    }
+
+    [TestMethod]
     public void GetAll_ReturnsAllPlaces_List()
     {
       Place newPlace1 = new Place("Seattle", "1/1/2023 - 1/5/2023", "Entry");
