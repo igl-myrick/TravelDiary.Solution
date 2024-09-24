@@ -48,6 +48,17 @@ namespace JobBoard.Tests
     }
 
     [TestMethod]
+    public void SetDuration_SetsValueOfDuration_String()
+    {
+      string tripDuration = "1/1/2023 - 1/5/2023";
+      Place newPlace = new Place("Seattle", tripDuration);
+      string newDuration = "6/1/2023 - 6/5/2023";
+      newPlace.Duration = newDuration;
+      string result = newPlace.Duration;
+      Assert.AreEqual(newDuration, result);
+    }
+
+    [TestMethod]
     public void GetAll_ReturnsAllPlaces_List()
     {
       Place newPlace1 = new Place("Seattle", "1/1/2023 - 1/5/2023");
