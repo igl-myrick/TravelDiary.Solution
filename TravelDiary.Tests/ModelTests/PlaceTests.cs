@@ -16,7 +16,7 @@ namespace JobBoard.Tests
     [TestMethod]
     public void PlaceConstructor_CreatesInstanceOfPlace_Place()
     {
-      Place newPlace = new Place("Seattle", "1/1/2023 - 1/5/2023");
+      Place newPlace = new Place("Seattle", "1/1/2023 - 1/5/2023", "Entry");
       Assert.AreEqual(typeof(Place), newPlace.GetType());
     }
 
@@ -24,7 +24,7 @@ namespace JobBoard.Tests
     public void GetCityName_GetsValueOfCityName_String()
     {
       string city = "Seattle";
-      Place newPlace = new Place(city, "1/1/2023 - 1/5/2023");
+      Place newPlace = new Place(city, "1/1/2023 - 1/5/2023", "Entry");
       Assert.AreEqual(city, newPlace.CityName);
     }
 
@@ -32,7 +32,7 @@ namespace JobBoard.Tests
     public void SetCityName_SetsValueOfCityName_String()
     {
       string city = "Seattle";
-      Place newPlace = new Place(city, "1/1/2023 - 1/5/2023");
+      Place newPlace = new Place(city, "1/1/2023 - 1/5/2023", "Entry");
       string newCity = "New York";
       newPlace.CityName = newCity;
       string result = newPlace.CityName;
@@ -43,7 +43,7 @@ namespace JobBoard.Tests
     public void GetDuration_GetsValueOfDuration_String()
     {
       string tripDuration = "1/1/2023 - 1/5/2023";
-      Place newPlace = new Place("Seattle", tripDuration);
+      Place newPlace = new Place("Seattle", tripDuration, "Entry");
       Assert.AreEqual(tripDuration, newPlace.Duration);
     }
 
@@ -51,7 +51,7 @@ namespace JobBoard.Tests
     public void SetDuration_SetsValueOfDuration_String()
     {
       string tripDuration = "1/1/2023 - 1/5/2023";
-      Place newPlace = new Place("Seattle", tripDuration);
+      Place newPlace = new Place("Seattle", tripDuration, "Entry");
       string newDuration = "6/1/2023 - 6/5/2023";
       newPlace.Duration = newDuration;
       string result = newPlace.Duration;
@@ -59,10 +59,18 @@ namespace JobBoard.Tests
     }
 
     [TestMethod]
+    public void GetEntry_GetsValueOfEntry_String()
+    {
+      string diaryEntry = "Entry";
+      Place newPlace = new Place("Seattle", "1/1/2023 - 1/5/2023", diaryEntry);
+      Assert.AreEqual(diaryEntry, newPlace.Entry);
+    }
+
+    [TestMethod]
     public void GetAll_ReturnsAllPlaces_List()
     {
-      Place newPlace1 = new Place("Seattle", "1/1/2023 - 1/5/2023");
-      Place newPlace2 = new Place("New York", "6/1/2023 - 6/5/2023");
+      Place newPlace1 = new Place("Seattle", "1/1/2023 - 1/5/2023", "Entry");
+      Place newPlace2 = new Place("New York", "6/1/2023 - 6/5/2023", "Entry");
       List<Place> newList = new List<Place> { newPlace1, newPlace2 };
 
       List<Place> result = Place.GetAll();
@@ -73,7 +81,7 @@ namespace JobBoard.Tests
     [TestMethod]
     public void GetId_PlacesInstantiateWithIdAndGetterReturns_Int()
     {
-      Place newPlace = new Place("Seattle", "1/1/2023 - 1/5/2023");
+      Place newPlace = new Place("Seattle", "1/1/2023 - 1/5/2023", "Entry");
 
       int result = newPlace.Id;
 
@@ -83,8 +91,8 @@ namespace JobBoard.Tests
     [TestMethod]
     public void Find_ReturnsCorrectPlace_Place()
     {
-      Place newPlace1 = new Place("Seattle", "1/1/2023 - 1/5/2023");
-      Place newPlace2 = new Place("New York", "6/1/2023 - 6/5/2023");
+      Place newPlace1 = new Place("Seattle", "1/1/2023 - 1/5/2023", "Entry");
+      Place newPlace2 = new Place("New York", "6/1/2023 - 6/5/2023", "Entry");
 
       Place result = Place.Find(2);
 
